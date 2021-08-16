@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.31005.135
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KnowledgeAccountingSystem", "KnowledgeAccountingSystem\KnowledgeAccountingSystem.csproj", "{1BC87160-4312-45BF-9188-6954949C1DC0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KnowledgeAccountingSystem.DAL", "KnowledgeAccountingSystem.DAL\KnowledgeAccountingSystem.DAL.csproj", "{7A4FC593-FD10-43AF-98C8-9D0999BE7B0C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KnowledgeAccountingSystem.BLL", "KnowledgeAccountingSystem.BLL\KnowledgeAccountingSystem.BLL.csproj", "{D756D5FF-F317-40B9-A26E-4B389422C15F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{1BC87160-4312-45BF-9188-6954949C1DC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1BC87160-4312-45BF-9188-6954949C1DC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1BC87160-4312-45BF-9188-6954949C1DC0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A4FC593-FD10-43AF-98C8-9D0999BE7B0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A4FC593-FD10-43AF-98C8-9D0999BE7B0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A4FC593-FD10-43AF-98C8-9D0999BE7B0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A4FC593-FD10-43AF-98C8-9D0999BE7B0C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D756D5FF-F317-40B9-A26E-4B389422C15F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D756D5FF-F317-40B9-A26E-4B389422C15F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D756D5FF-F317-40B9-A26E-4B389422C15F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D756D5FF-F317-40B9-A26E-4B389422C15F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
