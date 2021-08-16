@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace KnowledgeAccountingSystem.DAL
+namespace KnowledgeAccountingSystem.DAL.Entities
 {
-    public class DbContext
+    public class Skill
     {
 
     }
