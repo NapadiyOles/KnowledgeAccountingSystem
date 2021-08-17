@@ -15,7 +15,7 @@ namespace KnowledgeAccountingSystem.DAL.Interfaces
 
         IUserRepository UserRepository { get; }
 
-        Task<int> SaveAsync();
-
+        Task SaveAsync();
+        void Save();
     }
 }

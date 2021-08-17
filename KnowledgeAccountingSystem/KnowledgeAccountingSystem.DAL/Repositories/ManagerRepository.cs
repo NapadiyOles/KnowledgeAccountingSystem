@@ -10,6 +10,12 @@ namespace KnowledgeAccountingSystem.DAL.Repositories
 {
     public class ManagerRepository : IManagerRepository
     {
+        readonly KnowledgeDbContext context;
+        public ManagerRepository(KnowledgeDbContext _context)
+        {
+            context = _context;
+        }
+
         public Task AddAsync(Manager entity)
         {
             throw new NotImplementedException();

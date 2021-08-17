@@ -10,6 +10,12 @@ namespace KnowledgeAccountingSystem.DAL.Repositories
 {
     public class ProgrammerRepository : IProgrammerRepository
     {
+        readonly KnowledgeDbContext context;
+        public ProgrammerRepository(KnowledgeDbContext _context)
+        {
+            context = _context;
+        }
+
         public Task AddAsync(Programmer entity)
         {
             throw new NotImplementedException();

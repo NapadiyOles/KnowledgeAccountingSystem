@@ -10,6 +10,12 @@ namespace KnowledgeAccountingSystem.DAL.Repositories
 {
     public class SkillRepository : ISkillRepository
     {
+        readonly KnowledgeDbContext context;
+        public SkillRepository(KnowledgeDbContext _context)
+        {
+            context = _context;
+        }
+
         public Task AddAsync(Skill entity)
         {
             throw new NotImplementedException();

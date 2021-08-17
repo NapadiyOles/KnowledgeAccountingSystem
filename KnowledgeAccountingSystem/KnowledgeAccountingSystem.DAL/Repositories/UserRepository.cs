@@ -5,39 +5,43 @@ using System.Text;
 using System.Threading.Tasks;
 using KnowledgeAccountingSystem.DAL.Entities;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace KnowledgeAccountingSystem.DAL.Repositories
 {
     public class UserRepository : IUserRepository
     {
-        public Task AddAsync(User entity)
+        readonly KnowledgeDbContext context;
+        public UserRepository(KnowledgeDbContext _context)
         {
-            throw new NotImplementedException();
+            context = _context;
+        }
+        public async Task AddAsync(User entity)
+        {
+            await context.Users.AddAsync(entity);
         }
 
-        public Task DeleteByIdAsync(int id)
+        public async Task DeleteByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            context.Users.Remove(await context.Users.FindAsync(id));
         }
 
         public IQueryable<User> FindAll()
         {
-            throw new NotImplementedException();
+            return context.Users.AsNoTracking();
         }
 
-        public Task<User> GetByEmailPasswordAsync(string email, string password)
+        public async Task<User> GetByEmailPasswordAsync(string email, string password) => await Task.Run(() =>
+         context.Users.FirstOrDefault(x => x.Email == email && x.Password == password));
+        
+        public async Task<User> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
-        }
-
-        public Task<User> GetByIdAsync(int id)
-        {
-            throw new NotImplementedException();
+            return await context.Users.FindAsync(id);
         }
 
         public void Update(User entity)
         {
-            throw new NotImplementedException();
+            context.Users.Update(entity);
         }
     }
 }
