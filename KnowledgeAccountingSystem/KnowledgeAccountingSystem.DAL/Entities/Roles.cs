@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace KnowledgeAccountingSystem.DAL.Entities
+﻿namespace KnowledgeAccountingSystem.DAL.Entities
 {
-    public class Roles
+    public static class Roles
     {
-
+        public const string Administrator = "Administrator";
+        public const string Manager = "Manager";
+        public const string Programmer = "Programmer";        
     }
 }
