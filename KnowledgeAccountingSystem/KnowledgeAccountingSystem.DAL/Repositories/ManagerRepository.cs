@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using KnowledgeAccountingSystem.DAL.Entities;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace KnowledgeAccountingSystem.DAL.Repositories
 {
@@ -16,44 +17,59 @@ namespace KnowledgeAccountingSystem.DAL.Repositories
             context = _context;
         }
 
-        public Task AddAsync(Manager entity)
+        public async Task AddAsync(Manager entity)
         {
-            throw new NotImplementedException();
+            await context.Managers.AddAsync(entity);
         }
 
-        public Task DeleteByIdAsync(int id)
+        public async Task DeleteByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            context.Managers.Remove(await context.Managers.FindAsync(id));
         }
 
         public IQueryable<Manager> FindAll()
         {
-            throw new NotImplementedException();
+            return context.Managers
+            .Include(x => x.Programmers)
+            .Include(x => x.User)
+            .AsNoTracking();
         }
 
-        public Task<IEnumerable<Programmer>> GetAllChoosenProgrammersAsync(int id)
+        public async Task<IEnumerable<Programmer>> GetAllChoosenProgrammersAsync(int id) => (await GetByIdAsync(id)).Programmers
+            .Select(x => GetProgrammerByIdAsync(x.Id).Result);
+
+        public async Task<Manager> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            return await context.Managers
+            .Include(x => x.Programmers)
+            .Include(x => x.User)
+            .AsNoTracking()
+            .SingleOrDefaultAsync(x => x.Id == id);
         }
 
-        public Task<Manager> GetByIdAsync(int id)
+        public async Task SelectProgrammerAsync(int managerId, int programmerId)
         {
-            throw new NotImplementedException();
+            var programmer = await GetProgrammerByIdAsync(programmerId);
+            programmer.ManagerId = managerId;
+            context.Programmers.Update(programmer);
         }
 
-        public Task SelectProgrammerAsync(int managerId, int programmerId)
-        {
-            throw new NotImplementedException();
-        }
+        private async Task<Programmer> GetProgrammerByIdAsync(int programmerId) => await context.Programmers
+            .Include(x => x.Skills)
+            .Include(x => x.User)
+            .AsNoTracking()
+            .SingleOrDefaultAsync(x => x.Id == programmerId);
 
-        public Task UnsubscribeProgrammerAsync(int managerId, int programmerId)
+        public async Task UnsubscribeProgrammerAsync(int managerId, int programmerId)
         {
-            throw new NotImplementedException();
+            var programmer = await GetProgrammerByIdAsync(programmerId);
+            programmer.ManagerId = default;
+            context.Programmers.Update(programmer);
         }
 
         public void Update(Manager entity)
         {
-            throw new NotImplementedException();
+            context.Managers.Update(entity);
         }
     }
 }
