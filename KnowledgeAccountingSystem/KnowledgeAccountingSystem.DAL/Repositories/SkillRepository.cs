@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using KnowledgeAccountingSystem.DAL.Entities;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace KnowledgeAccountingSystem.DAL.Repositories
 {
@@ -16,34 +17,35 @@ namespace KnowledgeAccountingSystem.DAL.Repositories
             context = _context;
         }
 
-        public Task AddAsync(Skill entity)
+        public async Task AddAsync(Skill entity)
         {
-            throw new NotImplementedException();
+            await context.Skills.AddAsync(entity);
         }
 
-        public Task DeleteByIdAsync(int id)
+        public async Task DeleteByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            context.Skills.Remove(await context.Skills.FindAsync(id));
         }
 
         public IQueryable<Skill> FindAll()
         {
-            throw new NotImplementedException();
+            return context.Skills.Include(x => x.Programmer).AsNoTracking();
         }
 
         public IQueryable<Skill> GetAllProgrammersSkillsById(int programmerId)
         {
-            throw new NotImplementedException();
+            return context.Skills.Where(x => x.Programmer.Id == programmerId);
         }
 
-        public Task<Skill> GetByIdAsync(int id)
+        public async Task<Skill> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            return await context.Skills.Include(x => x.Programmer)
+            .SingleOrDefaultAsync(x => x.Id == id);
         }
 
         public void Update(Skill entity)
         {
-            throw new NotImplementedException();
+            context.Skills.Update(entity);
         }
     }
 }
