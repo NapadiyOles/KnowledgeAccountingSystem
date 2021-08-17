@@ -1,5 +1,6 @@
 ﻿using KnowledgeAccountingSystem.DAL.Entities;
 using KnowledgeAccountingSystem.DAL.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,39 +17,37 @@ namespace KnowledgeAccountingSystem.DAL.Repositories
             context = _context;
         }
 
-        public Task AddAsync(Programmer entity)
+        public async Task AddAsync(Programmer entity)
         {
-            throw new NotImplementedException();
+            await context.Programmers.AddAsync(entity);
         }
 
-        public Task DeleteByIdAsync(int id)
+        public async Task DeleteByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            context.Programmers
+                .Remove(await context.Programmers.FindAsync(id));
         }
 
         public IQueryable<Programmer> FindAll()
         {
-            throw new NotImplementedException();
+            return context.Programmers
+                .Include(x => x.Skills)
+                .Include(x => x.User)
+                .AsNoTracking();
         }
 
-        public IQueryable<Programmer> FindAllWithDetails()
+        public async Task<Programmer> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
-        }
-
-        public Task<Programmer> GetByIdAsync(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<Programmer> GetByIdWithDetailsAsync(int id)
-        {
-            throw new NotImplementedException();
+            return await context.Programmers
+                .Include(x => x.Skills)
+                .Include(x => x.User)
+                .AsNoTracking()
+                .SingleOrDefaultAsync(x => x.Id == id);
         }
 
         public void Update(Programmer entity)
         {
-            throw new NotImplementedException();
+            context.Programmers.Update(entity);
         }
     }
 }

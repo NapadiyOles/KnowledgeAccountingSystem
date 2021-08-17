@@ -9,7 +9,5 @@ namespace KnowledgeAccountingSystem.DAL.Interfaces
 {
     public interface IProgrammerRepository : IRepository<Programmer>
     {
-        IQueryable<Programmer> FindAllWithDetails();
-        Task<Programmer> GetByIdWithDetailsAsync(int id);
     }
 }
