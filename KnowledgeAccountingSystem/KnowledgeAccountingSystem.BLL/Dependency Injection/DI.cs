@@ -1,4 +1,7 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using KnowledgeAccountingSystem.DAL;
+using KnowledgeAccountingSystem.DAL.Interfaces;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,7 +10,13 @@ namespace KnowledgeAccountingSystem.BLL.Dependency_Injection
 {
     public static class DI
     {
-        public static void AddDependency(this IServiceCollection services, string connectionString)
+        public static void AddDependencyDAL(this IServiceCollection services, string connectionString)
+        {
+            services.AddDbContext<KnowledgeDbContext>(opt => opt.UseSqlServer(connectionString));
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+        }
+
+        public static void AddDependencyBLL(this IServiceCollection services)
         {
 
         }

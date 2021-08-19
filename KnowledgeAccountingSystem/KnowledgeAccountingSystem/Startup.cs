@@ -27,7 +27,10 @@ namespace KnowledgeAccountingSystem
         public void ConfigureServices(IServiceCollection services)
         {
             string connectionString = Configuration.GetConnectionString("DefaultConnectionString");
-            services.AddDependency(connectionString);
+
+            services.AddDependencyDAL(connectionString);
+            services.AddDependencyBLL();
+
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
