@@ -5,6 +5,8 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using AutoMapper;
+using KnowledgeAccountingSystem.BLL.Mapper;
 
 namespace KnowledgeAccountingSystem.BLL.Dependency_Injection
 {
@@ -18,7 +20,8 @@ namespace KnowledgeAccountingSystem.BLL.Dependency_Injection
 
         public static void AddDependencyBLL(this IServiceCollection services)
         {
-
+            services.AddSingleton<IMapper>(new AutoMapper.Mapper(new MapperConfiguration(config =>
+            config.AddProfile<AutomapperProfile>())));
         }
     }
 }
