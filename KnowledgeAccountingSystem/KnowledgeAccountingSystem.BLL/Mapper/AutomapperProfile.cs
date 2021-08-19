@@ -13,9 +13,6 @@ namespace KnowledgeAccountingSystem.BLL.Mapper
         {
             CreateMap<User, UserModel>().ReverseMap();
 
-            CreateMap<Skill, SkillModel>()
-                .ReverseMap();
-
             CreateMap<Programmer, ProgrammerModel>()
                 .ForMember(x => x.Name, z => z.MapFrom(y => y.User.Name))
                 .ForMember(x => x.Surname, z => z.MapFrom(y => y.User.Surname))
@@ -29,8 +26,17 @@ namespace KnowledgeAccountingSystem.BLL.Mapper
                 .ForMember(x => x.Skills, z => z.MapFrom(y => y.Skills))
                 .ReverseMap();
 
-            CreateMap<Manager, ManagerModel>()
+            CreateMap<Skill, SkillModel>()
+                .ForMember(x => x.ProgrammerId, y => y.MapFrom(z => z.ProgrammerId))
                 .ReverseMap();
+
+            CreateMap<Manager, ManagerModel>()
+                .ForMember(x => x.Name, z => z.MapFrom(y => y.User.Name))
+                .ForMember(x => x.Surname, z => z.MapFrom(y => y.User.Surname))
+                .ForMember(x => x.Programmers, z => z.MapFrom(y => y.Programmers))
+                .ReverseMap();
+
+
         }
     }
 }

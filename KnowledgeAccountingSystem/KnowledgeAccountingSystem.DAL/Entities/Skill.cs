@@ -24,6 +24,7 @@
         public int Id { get; set; }
         public skillArea Name { get; set; }
         public lvl Lvl { get; set; }
+
         public int ProgrammerId { get; set; }
         public Programmer Programmer { get; set; }
     }
