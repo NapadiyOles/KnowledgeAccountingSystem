@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace KnowledgeAccountingSystem.BLL.Interfaces
 {
-    public interface IAccountService
+    public interface IAccountChangeService
     {
-        Task<string> LoginAsync(string email, string password);
-        Task RegistrationAsync(UserModel model);
+        Task UpdateAccountAsync(UserModel model);
+        Task DeleteAccountAsync(int id);
+        int GetRoleId(int userId);
     }
 }
