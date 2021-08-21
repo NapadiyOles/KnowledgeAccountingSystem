@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Net;
 using System.Runtime.Serialization;
-using System.Text;
 
 namespace KnowledgeAccountingSystem.BLL.Validation
 {
+    [Serializable]
     public class AuthorizeException : KnowledgeAccountException
     {
         public AuthorizeException()
