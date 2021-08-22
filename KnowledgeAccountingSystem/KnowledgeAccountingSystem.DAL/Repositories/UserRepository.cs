@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using KnowledgeAccountingSystem.DAL.Entities;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 
 namespace KnowledgeAccountingSystem.DAL.Repositories
 {
@@ -37,6 +38,13 @@ namespace KnowledgeAccountingSystem.DAL.Repositories
         public async Task<User> GetByIdAsync(int id)
         {
             return await context.Users.FindAsync(id);
+        }
+
+        public async Task<User> GetOneAsync(Expression<Func<User, bool>> expression)
+        {
+            var user = await context.Users
+                .FirstOrDefaultAsync(expression);
+            return user;
         }
 
         public void Update(User entity)

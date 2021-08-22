@@ -7,7 +7,6 @@ using KnowledgeAccountingSystem.DAL.Entities;
 using KnowledgeAccountingSystem.DAL.Interfaces;
 using Microsoft.IdentityModel.Tokens;
 using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Net;
 using System.Security.Claims;
@@ -28,6 +27,7 @@ namespace KnowledgeAccountingSystem.BLL.Services
             this.configuration = configuration;
             this.context = context;
             this.mapper = mapper;
+            AddDefaultAdmin().Wait();
         }
 
         private string Encrypt(string password)
@@ -90,6 +90,16 @@ namespace KnowledgeAccountingSystem.BLL.Services
             };
             var token = tokenHandler.CreateToken(tokenDescriptor);
             return tokenHandler.WriteToken(token);
+        }
+
+        private async Task AddDefaultAdmin()
+        {
+            if (await context.UserRepository.GetOneAsync(u => u.Role == Roles.Administrator) is null)
+            {
+                await context.UserRepository.AddAsync(new User
+                { Name = "admin", Surname = "admin", Email="KnowledgeAccountingAdmin@gmail.com", Password = Encrypt("admin"), Role = Roles.Administrator });
+                await context.SaveAsync();
+            }
         }
     }
 }

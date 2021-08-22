@@ -25,6 +25,7 @@ namespace KnowledgeAccountingSystem.BLL.Dependency_Injection
             services.AddSingleton<IMapper>(new AutoMapper.Mapper(new MapperConfiguration(config =>
             config.AddProfile<AutomapperProfile>())));
             services.AddScoped<IAuthService, AuthService>();
+            services.AddScoped<IAdminServise, AdminService>();
         }
     }
 }
