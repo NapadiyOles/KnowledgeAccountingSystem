@@ -31,8 +31,8 @@ namespace KnowledgeAccountingSystem.DAL.Repositories
             return context.Users.AsNoTracking();
         }
 
-        public async Task<User> GetByEmailPasswordAsync(string email, string password) => await Task.Run(() =>
-         context.Users.FirstOrDefault(x => x.Email == email && x.Password == password));
+        public async Task<User> GetByEmailAsync(string email) => await Task.Run(() =>
+         context.Users.FirstOrDefault(x => x.Email == email));
         
         public async Task<User> GetByIdAsync(int id)
         {

@@ -8,6 +8,6 @@ namespace KnowledgeAccountingSystem.DAL.Interfaces
 {
     public interface IUserRepository : IRepository<User>
     {
-        Task<User> GetByEmailPasswordAsync(string email, string password);
+        Task<User> GetByEmailAsync(string email);
     }
 }

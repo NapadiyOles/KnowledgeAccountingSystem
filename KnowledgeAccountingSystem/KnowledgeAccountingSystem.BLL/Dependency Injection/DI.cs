@@ -7,6 +7,8 @@ using System.Collections.Generic;
 using System.Text;
 using AutoMapper;
 using KnowledgeAccountingSystem.BLL.Mapper;
+using KnowledgeAccountingSystem.BLL.Interfaces;
+using KnowledgeAccountingSystem.BLL.Services;
 
 namespace KnowledgeAccountingSystem.BLL.Dependency_Injection
 {
@@ -22,6 +24,7 @@ namespace KnowledgeAccountingSystem.BLL.Dependency_Injection
         {
             services.AddSingleton<IMapper>(new AutoMapper.Mapper(new MapperConfiguration(config =>
             config.AddProfile<AutomapperProfile>())));
+            services.AddScoped<IAuthService, AuthService>();
         }
     }
 }
