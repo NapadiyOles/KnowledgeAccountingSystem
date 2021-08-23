@@ -1,4 +1,5 @@
 ﻿using KnowledgeAccountingSystem.BLL.DTO;
+using KnowledgeAccountingSystem.DAL.Entities;
 using KnowledgeAccountingSystem.DAL.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -24,6 +25,31 @@ namespace KnowledgeAccountingSystem.BLL.ValidationExtensions
                 return true;
             else
                 return false;
+        }
+
+        public static bool IsSkillExist(this SkillModel model, IUnitOfWork context, int id)
+        {
+            if (context.SkillRepository.GetAllProgrammersSkillsById(id).Select(x => x.Name).Contains(model.Name))
+                return true;
+            else
+                return false;
+        }
+
+        public static bool IsSkillModelNotValid(this SkillModel model)
+        {
+            if (Enum.GetValues(typeof(skillArea)).Cast<skillArea>().Contains(model.Name) &&
+                Enum.GetValues(typeof(lvl)).Cast<lvl>().Contains(model.Lvl))
+                return false;
+            else
+                return true;
+        }
+
+        public static bool IsAccountNotExist(this int id, IUnitOfWork context)
+        {
+            if (context.UserRepository.FindAll().Select(x => x.Id).Contains(id))
+                return false;
+            else
+                return true;
         }
 
         public static bool IsEmailAlreadyExist(this string email, IUnitOfWork context)
