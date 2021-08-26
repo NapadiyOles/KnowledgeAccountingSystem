@@ -26,6 +26,8 @@ namespace KnowledgeAccountingSystem.BLL.Dependency_Injection
             config.AddProfile<AutomapperProfile>())));
             services.AddScoped<IAuthService, AuthService>();
             services.AddScoped<IAdminServise, AdminService>();
+            services.AddScoped<IProgrammerService, ProgrammerService>();
+            services.AddScoped<IManagerService, ManagerService>();
         }
     }
 }

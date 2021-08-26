@@ -10,10 +10,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\KnowledgeAccountingSystem.BLL\KnowledgeAccountingSystem.BLL.csproj" />
   </ItemGroup>
 
