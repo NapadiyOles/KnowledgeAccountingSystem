@@ -31,7 +31,7 @@ namespace KnowledgeAccountingSystem.BLL.Services
                 var skills = programmers
                     .Select(x => x.Skills
                     .Select(y => y.Name));
-
+                
                 var result = skills.AsEnumerable()
                     .Aggregate((current, next) => current.Concat(next))
                     .GroupBy(x => x)
