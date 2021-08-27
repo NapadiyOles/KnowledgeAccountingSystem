@@ -2,9 +2,6 @@
 using KnowledgeAccountingSystem.DAL.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using AutoMapper;
 using KnowledgeAccountingSystem.BLL.Mapper;
 using KnowledgeAccountingSystem.BLL.Interfaces;
@@ -28,6 +25,7 @@ namespace KnowledgeAccountingSystem.BLL.Dependency_Injection
             services.AddScoped<IAdminServise, AdminService>();
             services.AddScoped<IProgrammerService, ProgrammerService>();
             services.AddScoped<IManagerService, ManagerService>();
+            services.AddScoped<IStatService, StatisticService>();
         }
     }
 }
