@@ -10,7 +10,7 @@ namespace KnowledgeAccountingSystem.BLL.JWT
         public string Issuer { get; set; }
         public string Audience { get; set; }
         public string Secret { get; set; }
-        public int TokenLifeTime { get; set; }
+        public int TokenLifeTime { get; set; } 
 
         public SymmetricSecurityKey GetSymmetricSecurityKey()
         {
