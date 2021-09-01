@@ -15,6 +15,7 @@ using System.Threading.Tasks;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using KnowledgeAccountingSystem.BLL.JWT;
 
 namespace KnowledgeAccountingSystem
 {
@@ -34,7 +35,9 @@ namespace KnowledgeAccountingSystem
             services.AddDependencyDAL(connectionString);
             services.AddDependencyBLL();
 
-            var key = Encoding.ASCII.GetBytes(Configuration["JWT:Secret"]);
+            var authOptions = Configuration.GetSection("JWT").Get<AuthOptions>();
+            services.Configure<AuthOptions>(Configuration.GetSection("JWT"));
+
             services.AddAuthentication(cfg =>
             {
                 cfg.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -47,7 +50,7 @@ namespace KnowledgeAccountingSystem
                 opt.TokenValidationParameters = new TokenValidationParameters
                 {
                     ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(key),
+                    IssuerSigningKey = authOptions.GetSymmetricSecurityKey(),
                     ValidateIssuer = false,
                     ValidateAudience = false,
                     ClockSkew = TimeSpan.Zero
@@ -73,6 +76,7 @@ namespace KnowledgeAccountingSystem
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

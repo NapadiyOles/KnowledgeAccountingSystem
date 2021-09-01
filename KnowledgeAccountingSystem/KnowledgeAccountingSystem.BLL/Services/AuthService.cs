@@ -14,6 +14,8 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
+using KnowledgeAccountingSystem.BLL.JWT;
 
 namespace KnowledgeAccountingSystem.BLL.Services
 {
@@ -22,11 +24,13 @@ namespace KnowledgeAccountingSystem.BLL.Services
         private readonly IUnitOfWork context;
         private readonly IMapper mapper;
         private readonly IConfiguration configuration;
-        public AuthService(IUnitOfWork context, IMapper mapper, IConfiguration configuration)
+        private readonly IOptions<AuthOptions> authOptions;
+        public AuthService(IUnitOfWork context, IMapper mapper, IConfiguration configuration, IOptions<AuthOptions> authOptions)
         {
             this.configuration = configuration;
             this.context = context;
             this.mapper = mapper;
+            this.authOptions = authOptions;
             AddDefaultAdmin().Wait();
         }
 
@@ -76,8 +80,9 @@ namespace KnowledgeAccountingSystem.BLL.Services
 
         private string GetToken(UserModel user)
         {
+            var authParams = authOptions.Value;
             var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes(configuration["JWT:Secret"]);
+            var key = authParams.GetSymmetricSecurityKey();
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(new Claim[]
@@ -85,8 +90,8 @@ namespace KnowledgeAccountingSystem.BLL.Services
                     new Claim(ClaimTypes.Name, user.Name),
                     new Claim(ClaimTypes.Role, user.Role)
                 }),
-                Expires = DateTime.UtcNow.AddDays(3),
-                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+                Expires = DateTime.UtcNow.AddSeconds(authParams.TokenLifeTime),
+                SigningCredentials = new SigningCredentials( key, SecurityAlgorithms.HmacSha256Signature)
             };
             var token = tokenHandler.CreateToken(tokenDescriptor);
             return tokenHandler.WriteToken(token);
