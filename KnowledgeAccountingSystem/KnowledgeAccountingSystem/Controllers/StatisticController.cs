@@ -47,5 +47,11 @@ namespace KnowledgeAccountingSystem.Controllers
         {
             return Ok(service.GetTheLeastPumpedSkills());
         }
+
+        [HttpGet("TheLeastPumpedSkillsByManagerId/{id}")]
+        public ActionResult<IEnumerable<DAL.Entities.skillArea>> GetTheLeastPumpedSkillsByManagerId(int id)
+        {
+            return Ok(service.GetTheLeastPumpedSkillsByManagerId(id));
+        }
     }
 }

@@ -11,5 +11,7 @@ namespace KnowledgeAccountingSystem.BLL.Interfaces
         double GetAverageCountProgrammersByManager();
         IEnumerable<DAL.Entities.skillArea> GetTheLeastСommonSkills(int count);
         IEnumerable<DAL.Entities.skillArea> GetTheLeastPumpedSkills();
+        IEnumerable<DAL.Entities.skillArea> GetTheLeastPumpedSkillsByManagerId(int id);
+
     }
 }

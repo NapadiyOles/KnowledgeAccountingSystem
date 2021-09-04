@@ -44,7 +44,7 @@ namespace KnowledgeAccountingSystem.BLL.Services
             try
             {
                 List<skillArea> skillNames = new List<skillArea>();
-                var skills = context.SkillRepository.FindAll().Select(x => new { x.Name, x.Lvl }).Where(x => x.Lvl == lvl.Advanced);
+                var skills = context.SkillRepository.FindAll().Select(x => new { x.Name, x.Lvl });
 
                 var result = skills.AsEnumerable()
                     .GroupBy(x => x.Name)
@@ -69,7 +69,7 @@ namespace KnowledgeAccountingSystem.BLL.Services
         {
             var sum = low + middle + hight;
             var rate = (low / sum) * 100;
-            if (rate > 40)
+            if (rate > 35)
                 return true;
             return false;
         }
@@ -134,6 +134,34 @@ namespace KnowledgeAccountingSystem.BLL.Services
                     .Take(count).AsEnumerable());
             }
             catch (KnowledgeAccountException)
+            {
+                throw new KnowledgeAccountException("Something went wrong");
+            }
+        }
+
+        public IEnumerable<skillArea> GetTheLeastPumpedSkillsByManagerId(int id)
+        {
+            try
+            {
+                List<skillArea> skillNames = new List<skillArea>();
+                var programmersId = context.ManagerRepository.GetAllChoosenProgrammersAsync(id).Result
+                    .Select(x => x.Id);
+                var skills = context.SkillRepository.FindAll().Where(x => programmersId.Contains(x.ProgrammerId) ).Select(x => new { x.Name, x.Lvl });
+
+                var result = skills.AsEnumerable()
+                    .GroupBy(x => x.Name)
+                    .ToDictionary(x => x.Key, x => x.ToDictionary(y => y.Lvl, y => x.Count()));
+                foreach (var skill in result)
+                {
+                    int low = skill.Value[lvl.Low];
+                    int middle = skill.Value[lvl.Middle];
+                    int hight = skill.Value[lvl.Advanced];
+                    if (NeedMoreLections(low, middle, hight))
+                        skillNames.Add(skill.Key);
+                }
+                return skillNames.AsEnumerable();
+            }
+            catch
             {
                 throw new KnowledgeAccountException("Something went wrong");
             }
