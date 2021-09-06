@@ -4,6 +4,7 @@ using KnowledgeAccountingSystem.Filters;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using KnowledgeAccountingSystem.BLL.Validation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,18 +27,35 @@ namespace KnowledgeAccountingSystem.Controllers
             this.service = service;
         }
 
+        /// <summary>
+        /// This method get all programer`s skills.
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<SkillModel>>> GetSkills()
         {
             return Ok(await service.GetSkillsAsync(programmerId));
         }
 
+        /// <summary>
+        /// This method get programmer`s skill by id.
+        /// </summary>
+        /// <param name="skillId"></param>
+        /// <exception cref="InvalidModelException">incorrect skill id</exception>
+        /// <returns></returns>
         [HttpGet("{skillId}")]
         public async Task<ActionResult<SkillModel>> GetSkillById(int skillId)
         {
             return Ok(await service.GetProgrammerSkillByIdAsync(programmerId, skillId));
         }
 
+        /// <summary>
+        /// This method add skill to programmer.
+        /// </summary>
+        /// <param name="skill"></param>
+        /// <exception cref="ResourceAlreadyExistException">exist skill</exception>
+        /// <exception cref="InvalidModelException">incorrect skill model</exception>
+        /// <returns></returns>
         [HttpPost]
         public async Task<ActionResult> AddSkill(SkillModel skill)
         {
@@ -45,6 +63,13 @@ namespace KnowledgeAccountingSystem.Controllers
             return Ok();
         }
 
+        /// <summary>
+        /// This method update programmer`s skills.
+        /// </summary>
+        /// <param name="skill"></param>
+        /// <exception cref="ResourceAlreadyExistException">skill is not found</exception>
+        /// <exception cref="InvalidModelException">incorrect skill model</exception>
+        /// <returns></returns>
         [HttpPut]
         public async Task<ActionResult> UpdateSkill(SkillModel skill)
         {
@@ -52,6 +77,12 @@ namespace KnowledgeAccountingSystem.Controllers
             return Ok();
         }
 
+        /// <summary>
+        /// This method delete programmer`s skills.
+        /// </summary>
+        /// <param name="skillId"></param>
+        /// <exception cref="ResourceAlreadyExistException">skill is not found</exception>
+        /// <returns></returns>
         [HttpDelete("{skillId}")]
         public async Task<ActionResult> DeleteSkill(int skillId)
         {
@@ -59,6 +90,12 @@ namespace KnowledgeAccountingSystem.Controllers
             return Ok();
         }
 
+        /// <summary>
+        /// This method update programmer account.
+        /// </summary>
+        /// <param name="model"></param>
+        /// <exception cref="InvalidModelException">model incorrect</exception>
+        /// <returns></returns>
         [HttpPut("account")]
         public async Task<ActionResult> UpdateProgrammerAccount([FromBody] UserModel model)
         {
@@ -67,6 +104,10 @@ namespace KnowledgeAccountingSystem.Controllers
             return Ok();
         }
 
+        /// <summary>
+        /// This method delete programmer account.
+        /// </summary>
+        /// <returns></returns>
         [HttpDelete("account")]
         public async Task<ActionResult> DeleteProgrammerAccount()
         {

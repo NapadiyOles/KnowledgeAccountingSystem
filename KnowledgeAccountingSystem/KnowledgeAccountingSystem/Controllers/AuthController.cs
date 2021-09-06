@@ -4,6 +4,7 @@ using KnowledgeAccountingSystem.Filters;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using KnowledgeAccountingSystem.BLL.Validation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,6 +26,12 @@ namespace KnowledgeAccountingSystem.Controllers
             this.service = service;
         }
 
+        /// <summary>
+        /// This method authorize users.
+        /// </summary>
+        /// <param name="model">login model</param>
+        /// <exception cref="AuthorizeException">Unauthorized user</exception>
+        /// <returns>token</returns>
         [HttpPost("login")]
         public async Task<ActionResult<string>> Login([FromBody] LoginModel model)
         {
@@ -32,6 +39,13 @@ namespace KnowledgeAccountingSystem.Controllers
             return Ok(userToken);
         }
 
+        /// <summary>
+        /// This method add new user as programmer.
+        /// </summary>
+        /// <param name="model">register model</param>
+        /// <exception cref="ResourceAlreadyExistException">exist email</exception>
+        /// <exception cref="InvalidModelException">uncorrect register model</exception>
+        /// <returns></returns>
         [HttpPost("registration")]
         public async Task<ActionResult> Registraton([FromBody] RegisterModel model)
         {

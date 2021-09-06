@@ -57,9 +57,13 @@ namespace KnowledgeAccountingSystem
                 };
             });
             services.AddControllers();
-            services.AddSwaggerGen(c =>
+            services.AddSwaggerGen(options =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "KnowledgeAccountingSystem", Version = "v1" });
+                options.SwaggerDoc("v1", new OpenApiInfo 
+                { 
+                    Title = "KnowledgeAccountingSystem", 
+                    Version = "v1" 
+                });
             });
         }
 
@@ -72,8 +76,8 @@ namespace KnowledgeAccountingSystem
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "KnowledgeAccountingSystem v1"));
             }
 
-            app.UseHttpsRedirection();
 
+            app.UseCors(builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             app.UseRouting();
 
             app.UseAuthentication();

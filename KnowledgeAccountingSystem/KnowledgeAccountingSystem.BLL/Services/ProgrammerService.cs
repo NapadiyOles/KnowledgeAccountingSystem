@@ -102,7 +102,7 @@ namespace KnowledgeAccountingSystem.BLL.Services
         public async Task UpdateAccountAsync(UserModel model)
         {
             if (model.Id.IsAccountNotExist(context))
-                throw new AuthorizeException("No programmers with same id!", HttpStatusCode.BadRequest);
+                throw new AuthorizeException("No programmers with same id!", HttpStatusCode.NotFound);
             if (model.IsModelInvalid())
                 throw new InvalidModelException("Uncorrect user model", HttpStatusCode.BadRequest);
 

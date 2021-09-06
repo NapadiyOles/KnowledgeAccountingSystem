@@ -69,7 +69,7 @@ namespace KnowledgeAccountingSystem.BLL.Services
         {
             int? roleId = context.ManagerRepository.FindAll().FirstOrDefault(x => x.User.Id == userId)?.Id;
             if (!roleId.HasValue)
-                throw new AuthorizeException("Unauthorize on this role", HttpStatusCode.BadRequest);
+                throw new AuthorizeException("Unauthorize on this role", HttpStatusCode.Forbidden);
             return roleId.Value;
         }
 

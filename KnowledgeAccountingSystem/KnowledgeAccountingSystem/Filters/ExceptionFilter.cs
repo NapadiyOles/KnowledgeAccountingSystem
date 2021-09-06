@@ -10,7 +10,7 @@ namespace KnowledgeAccountingSystem.Filters
         public override void OnException(ExceptionContext context)
         {
             context.Result = context.Exception switch
-            {
+            { 
                 ArgumentNullException => new NotFoundObjectResult(context.Exception.Message),
                 AuthorizeException => new BadRequestObjectResult(context.Exception.Message),
                 InvalidModelException => new BadRequestObjectResult(context.Exception.Message),
