@@ -16,5 +16,10 @@
   <ItemGroup>
     <ProjectReference Include="..\KnowledgeAccountingSystem.BLL\KnowledgeAccountingSystem.BLL.csproj" />
   </ItemGroup>
+  <PropertyGroup>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);1591</NoWarn>
+  </PropertyGroup>
+  <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
 
 </Project>

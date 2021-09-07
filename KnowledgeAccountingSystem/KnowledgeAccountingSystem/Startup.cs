@@ -16,6 +16,8 @@ using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using KnowledgeAccountingSystem.BLL.JWT;
+using System.Reflection;
+using System.IO;
 
 namespace KnowledgeAccountingSystem
 {
@@ -64,6 +66,9 @@ namespace KnowledgeAccountingSystem
                     Title = "KnowledgeAccountingSystem", 
                     Version = "v1" 
                 });
+                var fileName = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var filePath = Path.Combine(AppContext.BaseDirectory, fileName);
+                options.IncludeXmlComments(filePath);
             });
         }
 

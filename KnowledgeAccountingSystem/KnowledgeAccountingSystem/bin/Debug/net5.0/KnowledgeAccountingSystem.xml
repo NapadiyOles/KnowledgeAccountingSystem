@@ -1,0 +1,194 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>KnowledgeAccountingSystem</name>
+    </assembly>
+    <members>
+        <member name="M:KnowledgeAccountingSystem.Controllers.AdminController.GetUsers">
+            <summary>
+            This method get all users.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:KnowledgeAccountingSystem.Controllers.AdminController.ChangeRole(System.Int32)">
+            <summary>
+            This method change user role.
+            </summary>
+            <param name="userId"></param>
+            <exception cref="T:KnowledgeAccountingSystem.BLL.Validation.AuthorizeException">incorrect id</exception>
+            <exception cref="T:KnowledgeAccountingSystem.BLL.Validation.ResourceAlreadyExistException">admin must by 1</exception>
+            <exception cref="T:KnowledgeAccountingSystem.BLL.Validation.InvalidModelException">incorrect choosen id</exception>
+            <returns></returns>
+        </member>
+        <member name="M:KnowledgeAccountingSystem.Controllers.AuthController.Login(KnowledgeAccountingSystem.BLL.DTO.LoginModel)">
+            <summary>
+            This method authorize users.
+            </summary>
+            <param name="model">login model</param>
+            <exception cref="T:KnowledgeAccountingSystem.BLL.Validation.AuthorizeException">Unauthorized user</exception>
+            <returns>token</returns>
+        </member>
+        <member name="M:KnowledgeAccountingSystem.Controllers.AuthController.Registraton(KnowledgeAccountingSystem.BLL.DTO.RegisterModel)">
+            <summary>
+            This method add new user as programmer.
+            </summary>
+            <param name="model">register model</param>
+            <exception cref="T:KnowledgeAccountingSystem.BLL.Validation.ResourceAlreadyExistException">exist email</exception>
+            <exception cref="T:KnowledgeAccountingSystem.BLL.Validation.InvalidModelException">uncorrect register model</exception>
+            <returns></returns>
+        </member>
+        <member name="M:KnowledgeAccountingSystem.Controllers.ManagerController.GetAllProgrammers">
+            <summary>
+            This method get all programmer`s.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:KnowledgeAccountingSystem.Controllers.ManagerController.GetProgrammersWithoutManagers">
+            <summary>
+            This method get programmers who do not have a manager.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:KnowledgeAccountingSystem.Controllers.ManagerController.GetChoosenProgrammers">
+            <summary>
+            This method get choosen programmers.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:KnowledgeAccountingSystem.Controllers.ManagerController.GetChoosenProgrammer(System.Int32)">
+            <summary>
+            This method get choosen programmer.
+            </summary>
+            <param name="programmerId"></param>
+            <exception cref="T:KnowledgeAccountingSystem.BLL.Validation.InvalidModelException">Programmer is not found</exception>
+            <returns></returns>
+        </member>
+        <member name="M:KnowledgeAccountingSystem.Controllers.ManagerController.SubscribeProgrammer(System.Int32)">
+            <summary>
+            This method choose programmer by manager.
+            </summary>
+            <param name="programmerId"></param>
+            <exception cref="T:KnowledgeAccountingSystem.BLL.Validation.InvalidModelException">Programmer is not found</exception>
+            <returns></returns>
+        </member>
+        <member name="M:KnowledgeAccountingSystem.Controllers.ManagerController.UnSubscribeProgrammer(System.Int32)">
+            <summary>
+            This method delete choosen programmer.
+            </summary>
+            <param name="programmerId"></param>
+            <exception cref="T:KnowledgeAccountingSystem.BLL.Validation.InvalidModelException">Programmer is not found</exception>
+            <returns></returns>
+        </member>
+        <member name="M:KnowledgeAccountingSystem.Controllers.ManagerController.UpdateManagerAccount(KnowledgeAccountingSystem.BLL.DTO.UserModel)">
+            <summary>
+            This method update manager account.
+            </summary>
+            <param name="model"></param>
+            <exception cref="T:KnowledgeAccountingSystem.BLL.Validation.InvalidModelException">model incorrect</exception>
+            <returns></returns>
+        </member>
+        <member name="M:KnowledgeAccountingSystem.Controllers.ManagerController.DeleteManagerAccount">
+            <summary>
+            This method delete manager account.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:KnowledgeAccountingSystem.Controllers.ProgrammerController.GetSkills">
+            <summary>
+            This method get all programer`s skills.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:KnowledgeAccountingSystem.Controllers.ProgrammerController.GetSkillById(System.Int32)">
+            <summary>
+            This method get programmer`s skill by id.
+            </summary>
+            <param name="skillId"></param>
+            <exception cref="T:KnowledgeAccountingSystem.BLL.Validation.InvalidModelException">incorrect skill id</exception>
+            <returns></returns>
+        </member>
+        <member name="M:KnowledgeAccountingSystem.Controllers.ProgrammerController.AddSkill(KnowledgeAccountingSystem.BLL.DTO.SkillModel)">
+            <summary>
+            This method add skill to programmer.
+            </summary>
+            <param name="skill"></param>
+            <exception cref="T:KnowledgeAccountingSystem.BLL.Validation.ResourceAlreadyExistException">exist skill</exception>
+            <exception cref="T:KnowledgeAccountingSystem.BLL.Validation.InvalidModelException">incorrect skill model</exception>
+            <returns></returns>
+        </member>
+        <member name="M:KnowledgeAccountingSystem.Controllers.ProgrammerController.UpdateSkill(KnowledgeAccountingSystem.BLL.DTO.SkillModel)">
+            <summary>
+            This method update programmer`s skills.
+            </summary>
+            <param name="skill"></param>
+            <exception cref="T:KnowledgeAccountingSystem.BLL.Validation.ResourceAlreadyExistException">skill is not found</exception>
+            <exception cref="T:KnowledgeAccountingSystem.BLL.Validation.InvalidModelException">incorrect skill model</exception>
+            <returns></returns>
+        </member>
+        <member name="M:KnowledgeAccountingSystem.Controllers.ProgrammerController.DeleteSkill(System.Int32)">
+            <summary>
+            This method delete programmer`s skills.
+            </summary>
+            <param name="skillId"></param>
+            <exception cref="T:KnowledgeAccountingSystem.BLL.Validation.ResourceAlreadyExistException">skill is not found</exception>
+            <returns></returns>
+        </member>
+        <member name="M:KnowledgeAccountingSystem.Controllers.ProgrammerController.UpdateProgrammerAccount(KnowledgeAccountingSystem.BLL.DTO.UserModel)">
+            <summary>
+            This method update programmer account.
+            </summary>
+            <param name="model"></param>
+            <exception cref="T:KnowledgeAccountingSystem.BLL.Validation.InvalidModelException">model incorrect</exception>
+            <returns></returns>
+        </member>
+        <member name="M:KnowledgeAccountingSystem.Controllers.ProgrammerController.DeleteProgrammerAccount">
+            <summary>
+            This method delete programmer account.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:KnowledgeAccountingSystem.Controllers.StatisticController.GetTopManagers(System.Int32)">
+            <summary>
+            This method get the most popular managers by programmers count.
+            </summary>
+            <param name="count"></param>
+            <exception cref="T:KnowledgeAccountingSystem.BLL.Validation.KnowledgeAccountException"/>
+            <returns></returns>
+        </member>
+        <member name="M:KnowledgeAccountingSystem.Controllers.StatisticController.GetTheMostPopularSkills(System.Int32)">
+            <summary>
+            This method get the most popular programmers skills.
+            </summary>
+            <param name="count"></param>
+            <exception cref="T:KnowledgeAccountingSystem.BLL.Validation.KnowledgeAccountException"/>
+            <returns></returns>
+        </member>
+        <member name="M:KnowledgeAccountingSystem.Controllers.StatisticController.GetTheLeastСommonSkills(System.Int32)">
+            <summary>
+            This method get the least common programmers skills.
+            </summary>
+            <param name="count"></param>
+            <exception cref="T:KnowledgeAccountingSystem.BLL.Validation.KnowledgeAccountException"/>
+            <returns></returns>
+        </member>
+        <member name="M:KnowledgeAccountingSystem.Controllers.StatisticController.GetAverageCountProgrammersByManager">
+            <summary>
+            This method get average count programmers by manager.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:KnowledgeAccountingSystem.Controllers.StatisticController.GetTheLeastPumpedSkills">
+            <summary>
+            This method get skills in which programmers have gaps.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:KnowledgeAccountingSystem.Controllers.StatisticController.GetTheLeastPumpedSkillsByManagerId(System.Int32)">
+            <summary>
+            This method get skills in which programmers have gaps (by manager).
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
