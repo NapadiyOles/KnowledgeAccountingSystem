@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using KnowledgeAccountingSystem.BLL.DTO;
 using KnowledgeAccountingSystem.DAL.Entities;
+using KnowledgeAccountingSystem.BLL.ValidationExtensions;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -28,6 +29,7 @@ namespace KnowledgeAccountingSystem.BLL.Mapper
 
             CreateMap<Skill, SkillModel>()
                 .ForMember(x => x.ProgrammerId, y => y.MapFrom(z => z.ProgrammerId))
+                .ForMember(x => x.Name, y => y.MapFrom(z => z.Name.ToString()))
                 .ReverseMap();
 
             CreateMap<Manager, ManagerModel>()

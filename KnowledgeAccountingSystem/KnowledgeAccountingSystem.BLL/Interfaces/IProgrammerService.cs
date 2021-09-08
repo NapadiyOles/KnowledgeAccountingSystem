@@ -10,7 +10,7 @@ namespace KnowledgeAccountingSystem.BLL.Interfaces
     {
         Task<IEnumerable<SkillModel>> GetSkillsAsync(int programmerId);
         Task<SkillModel> GetProgrammerSkillByIdAsync(int programmerId, int skillId);
-        Task AddSkillAsync(int programmerId, SkillModel skill);
+        void AddSkill(int programmerId, SkillModel skill);
         Task DeleteSkillAsync(int programmerId, int skillId);
         Task EditSkillAsync(int programmerId, SkillModel skill);
     }

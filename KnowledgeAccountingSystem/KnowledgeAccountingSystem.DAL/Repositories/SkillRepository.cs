@@ -17,6 +17,11 @@ namespace KnowledgeAccountingSystem.DAL.Repositories
             context = _context;
         }
 
+        public void Add(Skill entity)
+        {
+            context.Skills.Add(entity);
+        }
+
         public async Task AddAsync(Skill entity)
         {
             await context.Skills.AddAsync(entity);

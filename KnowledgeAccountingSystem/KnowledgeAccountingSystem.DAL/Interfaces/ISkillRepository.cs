@@ -9,5 +9,7 @@ namespace KnowledgeAccountingSystem.DAL.Interfaces
     public interface ISkillRepository : IRepository<Skill>
     {
         IQueryable<Skill> GetAllProgrammersSkillsById(int programmerId);
+
+        void Add(Skill entity);
     }
 }

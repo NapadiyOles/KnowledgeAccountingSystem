@@ -5,9 +5,12 @@ using KnowledgeAccountingSystem.BLL.Validation;
 using KnowledgeAccountingSystem.BLL.ValidationExtensions;
 using KnowledgeAccountingSystem.DAL.Entities;
 using KnowledgeAccountingSystem.DAL.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Security.Cryptography;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace KnowledgeAccountingSystem.BLL.Services
@@ -35,7 +38,7 @@ namespace KnowledgeAccountingSystem.BLL.Services
             IEnumerable<ProgrammerModel> choosenProgrammers = await GetChoosenProgrammersByManagerIdAsync(id);
             ProgrammerModel programmer = choosenProgrammers.FirstOrDefault(x => x.Id == programmerId);
 
-            if (programmer.Equals(null))
+            if (programmer == null)
                 throw new KnowledgeAccountException("Manager didnt choose this programmer");
 
             await context.ManagerRepository.UnsubscribeProgrammerAsync(id, programmerId);
@@ -88,20 +91,28 @@ namespace KnowledgeAccountingSystem.BLL.Services
         public async Task UpdateAccountAsync(UserModel model)
         {
             if (model.Id.IsAccountNotExist(context))
-                throw new AuthorizeException("No found programmers with the same id!", HttpStatusCode.BadRequest);
+                throw new AuthorizeException("No found managers with the same id!", HttpStatusCode.BadRequest);
             if (model.IsModelInvalid())
                 throw new InvalidModelException("Uncorrect user model", HttpStatusCode.BadRequest);
 
-            var user = await context.UserRepository.GetByIdAsync(model.Id);
-            context.UserRepository.Update(mapper.Map(model, user));
+            var user = mapper.Map<User>(model);
+            user.Password = Encrypt(model.Password);
+            context.UserRepository.Update(user);
             await context.SaveAsync();
         }
 
         public IEnumerable<ProgrammerModel> GetProgrammersWithoutManagers()
         {
             var programmers = context.ProgrammerRepository.FindAll().AsEnumerable();
-            var programmersWithoutManager = programmers.Where(x => x.Manager == null);
+            var programmersWithoutManager = programmers.Where(x => x.ManagerId == null);
             return mapper.Map<IEnumerable<ProgrammerModel>>(programmersWithoutManager);
+        }
+
+        private string Encrypt(string password)
+        {
+            var data = Encoding.Unicode.GetBytes(password);
+            var encrypted = ProtectedData.Protect(data, null, DataProtectionScope.LocalMachine);
+            return Convert.ToBase64String(encrypted);
         }
     }
 }

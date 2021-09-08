@@ -18,6 +18,7 @@ using Microsoft.IdentityModel.Tokens;
 using KnowledgeAccountingSystem.BLL.JWT;
 using System.Reflection;
 using System.IO;
+using KnowledgeAccountingSystem.Filters;
 
 namespace KnowledgeAccountingSystem
 {
@@ -59,6 +60,7 @@ namespace KnowledgeAccountingSystem
                 };
             });
             services.AddControllers();
+            services.AddScoped<ExceptionFilter>();
             services.AddSwaggerGen(options =>
             {
                 options.SwaggerDoc("v1", new OpenApiInfo 

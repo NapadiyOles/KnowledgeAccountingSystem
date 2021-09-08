@@ -7,8 +7,8 @@ namespace KnowledgeAccountingSystem.BLL.DTO
     public class ProgrammerModel
     {
         public int Id { get; set; }
-        public int Name { get; set; }
-        public int Surname { get; set; }
+        public string Name { get; set; }
+        public string Surname { get; set; }
         public IEnumerable<SkillModel> Skills { get; set; }
 
     }

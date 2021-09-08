@@ -1,9 +1,11 @@
 ﻿using KnowledgeAccountingSystem.BLL.DTO;
+using KnowledgeAccountingSystem.BLL.Validation;
 using KnowledgeAccountingSystem.DAL.Entities;
 using KnowledgeAccountingSystem.DAL.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -29,16 +31,29 @@ namespace KnowledgeAccountingSystem.BLL.ValidationExtensions
 
         public static bool IsSkillExist(this SkillModel model, IUnitOfWork context, int id)
         {
-            if (context.SkillRepository.GetAllProgrammersSkillsById(id).Select(x => x.Name).Contains(model.Name))
+            skillArea skillName = ToEnum<skillArea>(model.Name);
+            if (context.SkillRepository.GetAllProgrammersSkillsById(id).Select(x => x.Name).Contains(skillName))
                 return true;
             else
                 return false;
         }
-
+        private static T ToEnum<T>(string value)
+        {
+            try
+            {
+                return (T)Enum.Parse(typeof(T), value, true);
+            }
+            catch
+            {
+                throw new KnowledgeAccountException($"value { value } was not found", HttpStatusCode.Unauthorized);
+            }
+        }
         public static bool IsSkillModelNotValid(this SkillModel model)
         {
-            if (Enum.GetValues(typeof(skillArea)).Cast<skillArea>().Contains(model.Name) &&
-                Enum.GetValues(typeof(lvl)).Cast<lvl>().Contains(model.Lvl))
+            skillArea skillName = ToEnum<skillArea>(model.Name);
+            lvl skillLevel = ToEnum<lvl>(model.Lvl);
+            if (Enum.GetValues(typeof(skillArea)).Cast<skillArea>().Contains(skillName) &&
+                Enum.GetValues(typeof(lvl)).Cast<lvl>().Contains(skillLevel))
                 return false;
             else
                 return true;

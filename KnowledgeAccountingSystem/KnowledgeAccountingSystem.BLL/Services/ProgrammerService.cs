@@ -23,7 +23,7 @@ namespace KnowledgeAccountingSystem.BLL.Services
             this.mapper = mapper;
         }
 
-        public async Task AddSkillAsync(int programmerId, SkillModel skill)
+        public void AddSkill(int programmerId, SkillModel skill)
         {
             var programmer = context.ProgrammerRepository.GetByIdAsync(programmerId);
             if (programmer == null)
@@ -34,7 +34,7 @@ namespace KnowledgeAccountingSystem.BLL.Services
                 throw new ResourceAlreadyExistException("This skill already exists");
 
             skill.ProgrammerId = programmerId;
-            await context.SkillRepository.AddAsync(mapper.Map<Skill>(skill));
+            context.SkillRepository.Add(mapper.Map<Skill>(skill));
             context.Save();
         }
 

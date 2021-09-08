@@ -88,7 +88,7 @@ namespace KnowledgeAccountingSystem.Controllers
         /// <param name="programmerId"></param>
         /// <exception cref="InvalidModelException">Programmer is not found</exception>
         /// <returns></returns>
-        [HttpDelete("{programmerId}")]
+        [HttpDelete("unsubscribeProgrammer/{programmerId}")]
         public async Task<ActionResult> UnSubscribeProgrammer(int programmerId)
         {
             await service.UnsubscribeProgrammerAsync(managerId, programmerId);

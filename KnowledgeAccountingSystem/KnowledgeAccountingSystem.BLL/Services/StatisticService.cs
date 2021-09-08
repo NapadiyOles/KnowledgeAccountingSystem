@@ -51,9 +51,15 @@ namespace KnowledgeAccountingSystem.BLL.Services
                     .ToDictionary(x => x.Key, x => x.ToDictionary(y => y.Lvl, y => x.Count()));
                 foreach (var skill in result)
                 {
-                    int low = skill.Value[lvl.Low];
-                    int middle = skill.Value[lvl.Middle];
-                    int hight = skill.Value[lvl.Advanced];
+                    int low = 0;
+                    int middle = 0;
+                    int hight = 0;
+                    if (skill.Value.ContainsKey(lvl.Low))
+                        low = skill.Value[lvl.Low];
+                    if (skill.Value.ContainsKey(lvl.Middle))
+                        middle = skill.Value[lvl.Middle];
+                    if (skill.Value.ContainsKey(lvl.Advanced))
+                        hight = skill.Value[lvl.Advanced];
                     if (NeedMoreLections(low, middle, hight))
                         skillNames.Add(skill.Key);
                 }
@@ -153,9 +159,15 @@ namespace KnowledgeAccountingSystem.BLL.Services
                     .ToDictionary(x => x.Key, x => x.ToDictionary(y => y.Lvl, y => x.Count()));
                 foreach (var skill in result)
                 {
-                    int low = skill.Value[lvl.Low];
-                    int middle = skill.Value[lvl.Middle];
-                    int hight = skill.Value[lvl.Advanced];
+                    int low = 0;
+                    int middle = 0;
+                    int hight = 0;
+                    if (skill.Value.ContainsKey(lvl.Low))
+                        low = skill.Value[lvl.Low];
+                    if(skill.Value.ContainsKey(lvl.Middle))
+                        middle = skill.Value[lvl.Middle];
+                    if (skill.Value.ContainsKey(lvl.Advanced))
+                        hight = skill.Value[lvl.Advanced];
                     if (NeedMoreLections(low, middle, hight))
                         skillNames.Add(skill.Key);
                 }

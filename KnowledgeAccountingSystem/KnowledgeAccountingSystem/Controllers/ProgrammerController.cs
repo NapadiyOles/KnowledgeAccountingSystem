@@ -43,7 +43,7 @@ namespace KnowledgeAccountingSystem.Controllers
         /// <param name="skillId"></param>
         /// <exception cref="InvalidModelException">incorrect skill id</exception>
         /// <returns></returns>
-        [HttpGet("{skillId}")]
+        [HttpGet("getSkill/{skillId}")]
         public async Task<ActionResult<SkillModel>> GetSkillById(int skillId)
         {
             return Ok(await service.GetProgrammerSkillByIdAsync(programmerId, skillId));
@@ -56,10 +56,10 @@ namespace KnowledgeAccountingSystem.Controllers
         /// <exception cref="ResourceAlreadyExistException">exist skill</exception>
         /// <exception cref="InvalidModelException">incorrect skill model</exception>
         /// <returns></returns>
-        [HttpPost]
-        public async Task<ActionResult> AddSkill(SkillModel skill)
+        [HttpPost("addSkill")]
+        public ActionResult AddSkill(SkillModel skill)
         {
-            await service.AddSkillAsync(programmerId, skill);
+            service.AddSkill(programmerId, skill);
             return Ok();
         }
 
@@ -70,7 +70,7 @@ namespace KnowledgeAccountingSystem.Controllers
         /// <exception cref="ResourceAlreadyExistException">skill is not found</exception>
         /// <exception cref="InvalidModelException">incorrect skill model</exception>
         /// <returns></returns>
-        [HttpPut]
+        [HttpPut("updateSkill")]
         public async Task<ActionResult> UpdateSkill(SkillModel skill)
         {
             await service.EditSkillAsync(programmerId, skill);
@@ -83,7 +83,7 @@ namespace KnowledgeAccountingSystem.Controllers
         /// <param name="skillId"></param>
         /// <exception cref="ResourceAlreadyExistException">skill is not found</exception>
         /// <returns></returns>
-        [HttpDelete("{skillId}")]
+        [HttpDelete("removeSkill/{skillId}")]
         public async Task<ActionResult> DeleteSkill(int skillId)
         {
             await service.DeleteSkillAsync(programmerId, skillId);

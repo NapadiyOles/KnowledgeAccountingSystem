@@ -69,7 +69,7 @@ namespace KnowledgeAccountingSystem.BLL.Services
             var user = mapper.Map<User>(model);
             user.Role = Roles.Programmer;
             user.Password = Encrypt(model.Password);
-            await context.ProgrammerRepository.AddAsync(new Programmer { User = user });
+            await context.ProgrammerRepository.AddAsync(new Programmer { Id =user.Id, User = user });
             await context.SaveAsync();
         }
 
