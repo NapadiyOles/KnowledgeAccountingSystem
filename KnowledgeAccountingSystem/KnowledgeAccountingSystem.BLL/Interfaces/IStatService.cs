@@ -6,12 +6,12 @@ namespace KnowledgeAccountingSystem.BLL.Interfaces
 {
     public interface IStatService
     {
-        IEnumerable<ManagerModel> GetTopManagers(int count);
-        IEnumerable<DAL.Entities.skillArea> GetTheMostPopularSkills(int count);
+        IEnumerable<ManagerModelWithoutProgrammers> GetTopManagers(int count);
+        IEnumerable<string> GetTheMostPopularSkills(int count);
         double GetAverageCountProgrammersByManager();
-        IEnumerable<DAL.Entities.skillArea> GetTheLeastСommonSkills(int count);
-        IEnumerable<DAL.Entities.skillArea> GetTheLeastPumpedSkills();
-        IEnumerable<DAL.Entities.skillArea> GetTheLeastPumpedSkillsByManagerId(int id);
+        IEnumerable<string> GetTheLeastСommonSkills(int count);
+        IEnumerable<string> GetTheLeastPumpedSkills();
+        IEnumerable<string> GetTheLeastPumpedSkillsByManagerId(int id);
 
     }
 }

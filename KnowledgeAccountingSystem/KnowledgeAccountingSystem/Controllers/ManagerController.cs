@@ -38,6 +38,16 @@ namespace KnowledgeAccountingSystem.Controllers
         }
 
         /// <summary>
+        /// This method get all programmer`s without skills.
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("GetAllProgrammersWithoutSkills")]
+        public ActionResult<IEnumerable<ProgrammerModelWithoutSkills>> GetAllProgrammersWithoutSkills()
+        {
+            return Ok(service.GetAllProgrammersWithoutSkills());
+        }
+
+        /// <summary>
         /// This method get programmers who do not have a manager.
         /// </summary>
         /// <returns></returns>

@@ -7,6 +7,7 @@ using KnowledgeAccountingSystem.DAL.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -39,16 +40,13 @@ namespace KnowledgeAccountingSystem.BLL.Services
             }
         }
 
-        public IEnumerable<skillArea> GetTheLeastPumpedSkills()
+        public IEnumerable<string> GetTheLeastPumpedSkills()
         {
-            try
-            {
-                List<skillArea> skillNames = new List<skillArea>();
                 var skills = context.SkillRepository.FindAll().Select(x => new { x.Name, x.Lvl });
 
                 var result = skills.AsEnumerable()
                     .GroupBy(x => x.Name)
-                    .ToDictionary(x => x.Key, x => x.ToDictionary(y => y.Lvl, y => x.Count()));
+                    .ToDictionary(x => x.Key, x => x.GroupBy(x => x.Lvl).ToDictionary(y => y.Key, y => x.Count()));
                 foreach (var skill in result)
                 {
                     int low = 0;
@@ -61,14 +59,8 @@ namespace KnowledgeAccountingSystem.BLL.Services
                     if (skill.Value.ContainsKey(lvl.Advanced))
                         hight = skill.Value[lvl.Advanced];
                     if (NeedMoreLections(low, middle, hight))
-                        skillNames.Add(skill.Key);
-                }
-                return skillNames.AsEnumerable();  
-            }
-            catch
-            {
-                throw new KnowledgeAccountException("Something went wrong");
-            }
+                             yield return skill.Key.ToString("g");
+                }         
         }
 
         private bool NeedMoreLections(int low, int middle, int hight)
@@ -79,10 +71,9 @@ namespace KnowledgeAccountingSystem.BLL.Services
                 return true;
             return false;
         }
-        public IEnumerable<skillArea> GetTheLeastСommonSkills(int count)
+        public IEnumerable<string> GetTheLeastСommonSkills(int count)
         {
-            try
-            {
+           
                 var programmers = context.ProgrammerRepository.FindAll();
 
                 var skills = programmers
@@ -96,18 +87,15 @@ namespace KnowledgeAccountingSystem.BLL.Services
                     .Select(x => x.Key)
                     .Take(count);
 
-                return result;
-            }
-            catch (KnowledgeAccountException)
-            {
-                throw new KnowledgeAccountException("Something went wrong");
-            }
+                foreach (var item in result)
+                {
+                    yield return item.ToString("g");
+                }          
         }
 
-        public IEnumerable<skillArea> GetTheMostPopularSkills(int count)
+        public IEnumerable<string> GetTheMostPopularSkills(int count)
         {
-            try
-            {
+            
                 var programmers = context.ProgrammerRepository.FindAll();
 
                 var skills = programmers
@@ -120,21 +108,18 @@ namespace KnowledgeAccountingSystem.BLL.Services
                     .OrderByDescending(x => x.Count())
                     .Select(x => x.Key)
                     .Take(count);
-
-                return result;
-            }
-            catch (KnowledgeAccountException)
-            {
-                throw new KnowledgeAccountException("Something went wrong");
-            }
+                foreach (var item in result)
+                {
+                    yield return item.ToString("g");
+                }
         }
 
-        public IEnumerable<ManagerModel> GetTopManagers(int count)
+        public IEnumerable<ManagerModelWithoutProgrammers> GetTopManagers(int count)
         {
             try
             {
                 return mapper
-                    .Map<IEnumerable<ManagerModel>>(context.ManagerRepository
+                    .Map<IEnumerable<ManagerModelWithoutProgrammers>>(context.ManagerRepository
                     .FindAll()
                     .OrderByDescending(x => x.Programmers.Count())
                     .Take(count).AsEnumerable());
@@ -145,18 +130,23 @@ namespace KnowledgeAccountingSystem.BLL.Services
             }
         }
 
-        public IEnumerable<skillArea> GetTheLeastPumpedSkillsByManagerId(int id)
+        public IEnumerable<string> GetTheLeastPumpedSkillsByManagerId(int id)
         {
-            try
-            {
-                List<skillArea> skillNames = new List<skillArea>();
-                var programmersId = context.ManagerRepository.GetAllChoosenProgrammersAsync(id).Result
-                    .Select(x => x.Id);
-                var skills = context.SkillRepository.FindAll().Where(x => programmersId.Contains(x.ProgrammerId) ).Select(x => new { x.Name, x.Lvl });
+            var manager = context.ManagerRepository.GetByIdAsync(id).Result;
+            if (manager == null)
+                throw new ArgumentException("Manager with this id not found");
+            var programmersId = context.ProgrammerRepository
+                .FindAll()
+                .Where(x => x.ManagerId == id)
+                .Select(y => y.Id);
+            var skills = context.SkillRepository
+                .FindAll()
+                .Where(x => programmersId.Contains(x.ProgrammerId))
+                .Select(x => new { x.Name, x.Lvl });
 
                 var result = skills.AsEnumerable()
                     .GroupBy(x => x.Name)
-                    .ToDictionary(x => x.Key, x => x.ToDictionary(y => y.Lvl, y => x.Count()));
+                    .ToDictionary(x => x.Key, x => x.GroupBy(x => x.Lvl).ToDictionary(y => y.Key, y => x.Count()));
                 foreach (var skill in result)
                 {
                     int low = 0;
@@ -169,14 +159,8 @@ namespace KnowledgeAccountingSystem.BLL.Services
                     if (skill.Value.ContainsKey(lvl.Advanced))
                         hight = skill.Value[lvl.Advanced];
                     if (NeedMoreLections(low, middle, hight))
-                        skillNames.Add(skill.Key);
+                         yield return skill.Key.ToString("g");
                 }
-                return skillNames.AsEnumerable();
-            }
-            catch
-            {
-                throw new KnowledgeAccountException("Something went wrong");
-            }
         }
     }
 }

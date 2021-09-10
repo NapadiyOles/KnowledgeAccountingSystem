@@ -114,5 +114,12 @@ namespace KnowledgeAccountingSystem.BLL.Services
             var encrypted = ProtectedData.Protect(data, null, DataProtectionScope.LocalMachine);
             return Convert.ToBase64String(encrypted);
         }
+
+        public IEnumerable<ProgrammerModelWithoutSkills> GetAllProgrammersWithoutSkills()
+        {
+            return mapper.Map<IEnumerable<ProgrammerModelWithoutSkills>>(context.ProgrammerRepository
+                .FindAll()
+                .AsEnumerable());
+        }
     }
 }

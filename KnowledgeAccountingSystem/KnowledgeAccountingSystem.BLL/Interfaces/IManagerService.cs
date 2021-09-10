@@ -9,6 +9,7 @@ namespace KnowledgeAccountingSystem.BLL.Interfaces
     public interface IManagerService : IAccountService
     {
         IEnumerable<ProgrammerModel> GetAllProgrammers();
+        IEnumerable<ProgrammerModelWithoutSkills> GetAllProgrammersWithoutSkills();
         Task SubscribeProgrammerAsync(int managerId, int programmerId);
         Task<IEnumerable<ProgrammerModel>> GetChoosenProgrammersByManagerIdAsync(int id);
         Task<ProgrammerModel> GetChoosenProgrammerByManagerIdAsync(int id, int programmerId);

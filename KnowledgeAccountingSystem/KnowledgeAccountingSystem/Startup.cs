@@ -63,10 +63,10 @@ namespace KnowledgeAccountingSystem
             services.AddScoped<ExceptionFilter>();
             services.AddSwaggerGen(options =>
             {
-                options.SwaggerDoc("v1", new OpenApiInfo 
-                { 
-                    Title = "KnowledgeAccountingSystem", 
-                    Version = "v1" 
+                options.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Title = "KnowledgeAccountingSystem",
+                    Version = "v1"
                 });
                 var fileName = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 var filePath = Path.Combine(AppContext.BaseDirectory, fileName);

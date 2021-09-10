@@ -45,7 +45,7 @@ namespace KnowledgeAccountingSystem.Controllers
         /// <exception cref="ResourceAlreadyExistException">admin must by 1</exception>
         /// <exception cref="InvalidModelException">incorrect choosen id</exception>
         /// <returns></returns>
-        [HttpPut("{userId}")]
+        [HttpPut("changeUserRole/{userId}")]
         public async Task<ActionResult> ChangeRole(int userId)
         {
             await service.ChangeRoleAsync(userId);

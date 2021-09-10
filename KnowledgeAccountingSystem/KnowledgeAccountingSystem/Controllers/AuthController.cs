@@ -2,12 +2,8 @@
 using KnowledgeAccountingSystem.BLL.Interfaces;
 using KnowledgeAccountingSystem.Filters;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using KnowledgeAccountingSystem.BLL.Validation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace KnowledgeAccountingSystem.Controllers

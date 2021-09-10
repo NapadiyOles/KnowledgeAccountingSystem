@@ -4,12 +4,16 @@ using KnowledgeAccountingSystem.Filters;
 using KnowledgeAccountingSystem.BLL.Validation;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Authorization;
+using System;
 
 namespace KnowledgeAccountingSystem.Controllers
 {
+    [AllowAnonymous]
+    [Authorize]
     [Route("api/[controller]")]
-    [ApiController]
     [ExceptionFilter]
+    [ApiController]
     public class StatisticController : ControllerBase
     {
         private readonly IStatService service;
@@ -26,7 +30,7 @@ namespace KnowledgeAccountingSystem.Controllers
         /// <exception cref="KnowledgeAccountException"/>
         /// <returns></returns>
         [HttpGet("TopManagers/{count}")]
-        public ActionResult<IEnumerable<ManagerModel>> GetTopManagers(int count)
+        public ActionResult<IEnumerable<ManagerModelWithoutProgrammers>> GetTopManagers(int count)
         {          
                 return Ok(service.GetTopManagers(count));          
         }
@@ -70,7 +74,7 @@ namespace KnowledgeAccountingSystem.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet("TheLeastPumpedSkills")]
-        public ActionResult<IEnumerable<DAL.Entities.skillArea>> GetTheLeastPumpedSkills ()
+        public ActionResult<IEnumerable<string>> GetTheLeastPumpedSkills ()
         {
             return Ok(service.GetTheLeastPumpedSkills());
         }
@@ -79,9 +83,10 @@ namespace KnowledgeAccountingSystem.Controllers
         /// This method get skills in which programmers have gaps (by manager).
         /// </summary>
         /// <param name="id"></param>
+        /// <exception cref="ArgumentException">Manager with this id not found</exception>
         /// <returns></returns>
         [HttpGet("TheLeastPumpedSkillsByManagerId/{id}")]
-        public ActionResult<IEnumerable<DAL.Entities.skillArea>> GetTheLeastPumpedSkillsByManagerId(int id)
+        public ActionResult<IEnumerable<string>> GetTheLeastPumpedSkillsByManagerId(int id)
         {
             return Ok(service.GetTheLeastPumpedSkillsByManagerId(id));
         }

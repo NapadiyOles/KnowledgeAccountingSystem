@@ -8,6 +8,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 
 namespace KnowledgeAccountingSystem.BLL.ValidationExtensions
 {
@@ -31,6 +32,7 @@ namespace KnowledgeAccountingSystem.BLL.ValidationExtensions
 
         public static bool IsSkillExist(this SkillModel model, IUnitOfWork context, int id)
         {
+            Thread.Sleep(500);
             skillArea skillName = ToEnum<skillArea>(model.Name);
             if (context.SkillRepository.GetAllProgrammersSkillsById(id).Select(x => x.Name).Contains(skillName))
                 return true;
