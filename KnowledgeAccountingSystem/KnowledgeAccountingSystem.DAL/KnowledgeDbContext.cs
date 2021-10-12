@@ -13,7 +13,7 @@ namespace KnowledgeAccountingSystem.DAL
         public DbSet<Manager> Managers { get; set; }
         public DbSet<Skill> Skills { get; set; }
 
-        public KnowledgeDbContext() { }
+        //public KnowledgeDbContext() { }
 
         public KnowledgeDbContext(DbContextOptions<KnowledgeDbContext> opt) : base(opt)
         {

@@ -7,6 +7,9 @@ using Microsoft.EntityFrameworkCore;
 using KnowledgeAccountingSystem.BLL.Mapper;
 using System.Text;
 using System.Security.Cryptography;
+using System.IdentityModel.Tokens.Jwt;
+using Microsoft.IdentityModel.Tokens;
+using System.Security.Claims;
 
 namespace KnowledgeAccountingSystem.Tests
 {
@@ -117,6 +120,45 @@ namespace KnowledgeAccountingSystem.Tests
             var decrypted = ProtectedData.Unprotect(data, null, DataProtectionScope.LocalMachine);
             return Encoding.Unicode.GetString(decrypted);
         }
+
+        public static string GetProgrammersWithId1Token()
+        {
+            var tokenHandler = new JwtSecurityTokenHandler();
+            string Secret = "h24s71l32dinab56";
+            var key = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(Secret));
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(new Claim[]
+                {
+                    new Claim(ClaimTypes.Name, 2.ToString()),
+                    new Claim(ClaimTypes.Role, "Programmer")
+                }),
+                Expires = DateTime.UtcNow.AddSeconds(10000),
+                SigningCredentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256Signature)
+            };
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+            return tokenHandler.WriteToken(token);
+        }
+
+        public static string GetManagersWithId1Token()
+        {
+            var tokenHandler = new JwtSecurityTokenHandler();
+            string Secret = "h24s71l32dinab56";
+            var key = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(Secret));
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(new Claim[]
+                {
+                    new Claim(ClaimTypes.Name, 1.ToString()),
+                    new Claim(ClaimTypes.Role, "Manager")
+                }),
+                Expires = DateTime.UtcNow.AddSeconds(10000),
+                SigningCredentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256Signature)
+            };
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+            return tokenHandler.WriteToken(token);
+        }
+
         public static Mapper CreateMapperProfile()
         {
             var myProfile = new AutomapperProfile();

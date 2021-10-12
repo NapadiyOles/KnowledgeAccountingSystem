@@ -11,6 +11,10 @@
 using System;
 using System.Reflection;
 
+[assembly: Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactoryContentRootAttribute("KnowledgeAccountingSystem.BLL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=n" +
+    "ull", "D:\\Epam\\project\\KnowledgeAccountingSystem\\KnowledgeAccountingSystem.BLL", "KnowledgeAccountingSystem.BLL.csproj", "0")]
+[assembly: Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactoryContentRootAttribute("KnowledgeAccountingSystem.DAL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=n" +
+    "ull", "D:\\Epam\\project\\KnowledgeAccountingSystem\\KnowledgeAccountingSystem.DAL", "KnowledgeAccountingSystem.DAL.csproj", "0")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("KnowledgeAccountingSystem.Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
