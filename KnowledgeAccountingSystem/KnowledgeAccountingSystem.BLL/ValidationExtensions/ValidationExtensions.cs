@@ -47,7 +47,7 @@ namespace KnowledgeAccountingSystem.BLL.ValidationExtensions
             }
             catch
             {
-                throw new KnowledgeAccountException($"value { value } was not found", HttpStatusCode.Unauthorized);
+                throw new KnowledgeAccountException($"value { value } was not found", HttpStatusCode.BadRequest);
             }
         }
         public static bool IsSkillModelNotValid(this SkillModel model)

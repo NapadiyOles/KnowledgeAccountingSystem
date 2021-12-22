@@ -14,6 +14,7 @@ namespace KnowledgeAccountingSystem.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Produces("application/json")]
     [Authorize(Roles = DAL.Entities.Roles.Manager)]
     [ExceptionFilter]
     public class ManagerController : ControllerBase
@@ -31,7 +32,7 @@ namespace KnowledgeAccountingSystem.Controllers
         /// This method get all programmer`s.
         /// </summary>
         /// <returns></returns>
-        [HttpGet]
+        [HttpGet( Name="GetAllProgrammers")]
         public ActionResult<IEnumerable<ProgrammerModel>> GetAllProgrammers()
         {
             return Ok(service.GetAllProgrammers());
@@ -41,7 +42,7 @@ namespace KnowledgeAccountingSystem.Controllers
         /// This method get all programmer`s without skills.
         /// </summary>
         /// <returns></returns>
-        [HttpGet("GetAllProgrammersWithoutSkills")]
+        [HttpGet("GetAllProgrammersWithoutSkills", Name= "GetAllProgrammersWithoutSkills")]
         public ActionResult<IEnumerable<ProgrammerModelWithoutSkills>> GetAllProgrammersWithoutSkills()
         {
             return Ok(service.GetAllProgrammersWithoutSkills());
@@ -51,7 +52,7 @@ namespace KnowledgeAccountingSystem.Controllers
         /// This method get programmers who do not have a manager.
         /// </summary>
         /// <returns></returns>
-        [HttpGet("programmersWithoutManagers")]
+        [HttpGet("programmersWithoutManagers", Name = "GetProgrammersWithoutManagers")]
         public ActionResult<IEnumerable<ProgrammerModel>> GetProgrammersWithoutManagers()
         {
             return Ok(service.GetProgrammersWithoutManagers());
@@ -61,7 +62,7 @@ namespace KnowledgeAccountingSystem.Controllers
         /// This method get choosen programmers.
         /// </summary>
         /// <returns></returns>
-        [HttpGet("choosen")]
+        [HttpGet("choosen", Name = "GetChoosenProgrammers")]
         public async Task<ActionResult<IEnumerable<ProgrammerModel>>> GetChoosenProgrammers()
         {
             return Ok(await service.GetChoosenProgrammersByManagerIdAsync(managerId));

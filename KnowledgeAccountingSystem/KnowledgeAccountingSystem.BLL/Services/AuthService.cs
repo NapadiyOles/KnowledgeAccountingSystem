@@ -61,7 +61,7 @@ namespace KnowledgeAccountingSystem.BLL.Services
 
         public async Task RegistrationAsync(UserModel model)
         {
-            if (model.IsModelInvalid())
+            if (model.IsModelInvalid()) 
                 throw new InvalidModelException("uncorrect user model", HttpStatusCode.BadRequest);
             if (model.Email.IsEmailAlreadyExist(context))
                 throw new ResourceAlreadyExistException("Email already exist", HttpStatusCode.BadRequest);

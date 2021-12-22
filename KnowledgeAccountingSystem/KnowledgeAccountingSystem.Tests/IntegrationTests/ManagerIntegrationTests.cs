@@ -46,10 +46,7 @@ namespace KnowledgeAccountingSystem.Tests.IntegrationTests
 
             actual.OrderBy(x => x.Id);
             Assert.AreEqual(expectedLength, actual.Count);
-            //for (int i = 0; i < expectedLength; i++)
-            //{
-            //    Assert.IsTrue(_programmerModelEqualityComparer.Equals(expected[i], actual[i]));
-            //}
+            
         }
 
         [Test]
