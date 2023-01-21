@@ -1,25 +1,21 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Epam\\project\\KnowledgeAccountingSystem\\KnowledgeAccountingSystem.Tests\\KnowledgeAccountingSystem.Tests.csproj": {}
+    "D:\\Documents\\Projects\\KnowlageAccountingSystem\\KnowledgeAccountingSystem\\KnowledgeAccountingSystem.Tests\\KnowledgeAccountingSystem.Tests.csproj": {}
   },
   "projects": {
-    "D:\\Epam\\project\\KnowledgeAccountingSystem\\KnowledgeAccountingSystem.BLL\\KnowledgeAccountingSystem.BLL.csproj": {
+    "D:\\Documents\\Projects\\KnowlageAccountingSystem\\KnowledgeAccountingSystem\\KnowledgeAccountingSystem.BLL\\KnowledgeAccountingSystem.BLL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Epam\\project\\KnowledgeAccountingSystem\\KnowledgeAccountingSystem.BLL\\KnowledgeAccountingSystem.BLL.csproj",
+        "projectUniqueName": "D:\\Documents\\Projects\\KnowlageAccountingSystem\\KnowledgeAccountingSystem\\KnowledgeAccountingSystem.BLL\\KnowledgeAccountingSystem.BLL.csproj",
         "projectName": "KnowledgeAccountingSystem.BLL",
-        "projectPath": "D:\\Epam\\project\\KnowledgeAccountingSystem\\KnowledgeAccountingSystem.BLL\\KnowledgeAccountingSystem.BLL.csproj",
-        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "D:\\Epam\\project\\KnowledgeAccountingSystem\\KnowledgeAccountingSystem.BLL\\obj\\",
+        "projectPath": "D:\\Documents\\Projects\\KnowlageAccountingSystem\\KnowledgeAccountingSystem\\KnowledgeAccountingSystem.BLL\\KnowledgeAccountingSystem.BLL.csproj",
+        "packagesPath": "C:\\Users\\olesn\\.nuget\\packages\\",
+        "outputPath": "D:\\Documents\\Projects\\KnowlageAccountingSystem\\KnowledgeAccountingSystem\\KnowledgeAccountingSystem.BLL\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\"
-        ],
         "configFilePaths": [
-          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\olesn\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -32,8 +28,8 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "D:\\Epam\\project\\KnowledgeAccountingSystem\\KnowledgeAccountingSystem.DAL\\KnowledgeAccountingSystem.DAL.csproj": {
-                "projectPath": "D:\\Epam\\project\\KnowledgeAccountingSystem\\KnowledgeAccountingSystem.DAL\\KnowledgeAccountingSystem.DAL.csproj"
+              "D:\\Documents\\Projects\\KnowlageAccountingSystem\\KnowledgeAccountingSystem\\KnowledgeAccountingSystem.DAL\\KnowledgeAccountingSystem.DAL.csproj": {
+                "projectPath": "D:\\Documents\\Projects\\KnowlageAccountingSystem\\KnowledgeAccountingSystem\\KnowledgeAccountingSystem.DAL\\KnowledgeAccountingSystem.DAL.csproj"
               }
             }
           }
@@ -63,7 +59,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -72,26 +69,22 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Epam\\project\\KnowledgeAccountingSystem\\KnowledgeAccountingSystem.DAL\\KnowledgeAccountingSystem.DAL.csproj": {
+    "D:\\Documents\\Projects\\KnowlageAccountingSystem\\KnowledgeAccountingSystem\\KnowledgeAccountingSystem.DAL\\KnowledgeAccountingSystem.DAL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Epam\\project\\KnowledgeAccountingSystem\\KnowledgeAccountingSystem.DAL\\KnowledgeAccountingSystem.DAL.csproj",
+        "projectUniqueName": "D:\\Documents\\Projects\\KnowlageAccountingSystem\\KnowledgeAccountingSystem\\KnowledgeAccountingSystem.DAL\\KnowledgeAccountingSystem.DAL.csproj",
         "projectName": "KnowledgeAccountingSystem.DAL",
-        "projectPath": "D:\\Epam\\project\\KnowledgeAccountingSystem\\KnowledgeAccountingSystem.DAL\\KnowledgeAccountingSystem.DAL.csproj",
-        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "D:\\Epam\\project\\KnowledgeAccountingSystem\\KnowledgeAccountingSystem.DAL\\obj\\",
+        "projectPath": "D:\\Documents\\Projects\\KnowlageAccountingSystem\\KnowledgeAccountingSystem\\KnowledgeAccountingSystem.DAL\\KnowledgeAccountingSystem.DAL.csproj",
+        "packagesPath": "C:\\Users\\olesn\\.nuget\\packages\\",
+        "outputPath": "D:\\Documents\\Projects\\KnowlageAccountingSystem\\KnowledgeAccountingSystem\\KnowledgeAccountingSystem.DAL\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\"
-        ],
         "configFilePaths": [
-          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\olesn\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -143,7 +136,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -152,26 +146,22 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Epam\\project\\KnowledgeAccountingSystem\\KnowledgeAccountingSystem.Tests\\KnowledgeAccountingSystem.Tests.csproj": {
+    "D:\\Documents\\Projects\\KnowlageAccountingSystem\\KnowledgeAccountingSystem\\KnowledgeAccountingSystem.Tests\\KnowledgeAccountingSystem.Tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Epam\\project\\KnowledgeAccountingSystem\\KnowledgeAccountingSystem.Tests\\KnowledgeAccountingSystem.Tests.csproj",
+        "projectUniqueName": "D:\\Documents\\Projects\\KnowlageAccountingSystem\\KnowledgeAccountingSystem\\KnowledgeAccountingSystem.Tests\\KnowledgeAccountingSystem.Tests.csproj",
         "projectName": "KnowledgeAccountingSystem.Tests",
-        "projectPath": "D:\\Epam\\project\\KnowledgeAccountingSystem\\KnowledgeAccountingSystem.Tests\\KnowledgeAccountingSystem.Tests.csproj",
-        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "D:\\Epam\\project\\KnowledgeAccountingSystem\\KnowledgeAccountingSystem.Tests\\obj\\",
+        "projectPath": "D:\\Documents\\Projects\\KnowlageAccountingSystem\\KnowledgeAccountingSystem\\KnowledgeAccountingSystem.Tests\\KnowledgeAccountingSystem.Tests.csproj",
+        "packagesPath": "C:\\Users\\olesn\\.nuget\\packages\\",
+        "outputPath": "D:\\Documents\\Projects\\KnowlageAccountingSystem\\KnowledgeAccountingSystem\\KnowledgeAccountingSystem.Tests\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\"
-        ],
         "configFilePaths": [
-          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\olesn\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
@@ -184,14 +174,14 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "D:\\Epam\\project\\KnowledgeAccountingSystem\\KnowledgeAccountingSystem.BLL\\KnowledgeAccountingSystem.BLL.csproj": {
-                "projectPath": "D:\\Epam\\project\\KnowledgeAccountingSystem\\KnowledgeAccountingSystem.BLL\\KnowledgeAccountingSystem.BLL.csproj"
+              "D:\\Documents\\Projects\\KnowlageAccountingSystem\\KnowledgeAccountingSystem\\KnowledgeAccountingSystem.BLL\\KnowledgeAccountingSystem.BLL.csproj": {
+                "projectPath": "D:\\Documents\\Projects\\KnowlageAccountingSystem\\KnowledgeAccountingSystem\\KnowledgeAccountingSystem.BLL\\KnowledgeAccountingSystem.BLL.csproj"
               },
-              "D:\\Epam\\project\\KnowledgeAccountingSystem\\KnowledgeAccountingSystem.DAL\\KnowledgeAccountingSystem.DAL.csproj": {
-                "projectPath": "D:\\Epam\\project\\KnowledgeAccountingSystem\\KnowledgeAccountingSystem.DAL\\KnowledgeAccountingSystem.DAL.csproj"
+              "D:\\Documents\\Projects\\KnowlageAccountingSystem\\KnowledgeAccountingSystem\\KnowledgeAccountingSystem.DAL\\KnowledgeAccountingSystem.DAL.csproj": {
+                "projectPath": "D:\\Documents\\Projects\\KnowlageAccountingSystem\\KnowledgeAccountingSystem\\KnowledgeAccountingSystem.DAL\\KnowledgeAccountingSystem.DAL.csproj"
               },
-              "D:\\Epam\\project\\KnowledgeAccountingSystem\\KnowledgeAccountingSystem\\KnowledgeAccountingSystem.csproj": {
-                "projectPath": "D:\\Epam\\project\\KnowledgeAccountingSystem\\KnowledgeAccountingSystem\\KnowledgeAccountingSystem.csproj"
+              "D:\\Documents\\Projects\\KnowlageAccountingSystem\\KnowledgeAccountingSystem\\KnowledgeAccountingSystem\\KnowledgeAccountingSystem.csproj": {
+                "projectPath": "D:\\Documents\\Projects\\KnowlageAccountingSystem\\KnowledgeAccountingSystem\\KnowledgeAccountingSystem\\KnowledgeAccountingSystem.csproj"
               }
             }
           }
@@ -247,38 +237,32 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
-            "Microsoft.AspNetCore.App": {
-              "privateAssets": "none"
-            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Epam\\project\\KnowledgeAccountingSystem\\KnowledgeAccountingSystem\\KnowledgeAccountingSystem.csproj": {
+    "D:\\Documents\\Projects\\KnowlageAccountingSystem\\KnowledgeAccountingSystem\\KnowledgeAccountingSystem\\KnowledgeAccountingSystem.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Epam\\project\\KnowledgeAccountingSystem\\KnowledgeAccountingSystem\\KnowledgeAccountingSystem.csproj",
+        "projectUniqueName": "D:\\Documents\\Projects\\KnowlageAccountingSystem\\KnowledgeAccountingSystem\\KnowledgeAccountingSystem\\KnowledgeAccountingSystem.csproj",
         "projectName": "KnowledgeAccountingSystem",
-        "projectPath": "D:\\Epam\\project\\KnowledgeAccountingSystem\\KnowledgeAccountingSystem\\KnowledgeAccountingSystem.csproj",
-        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "D:\\Epam\\project\\KnowledgeAccountingSystem\\KnowledgeAccountingSystem\\obj\\",
+        "projectPath": "D:\\Documents\\Projects\\KnowlageAccountingSystem\\KnowledgeAccountingSystem\\KnowledgeAccountingSystem\\KnowledgeAccountingSystem.csproj",
+        "packagesPath": "C:\\Users\\olesn\\.nuget\\packages\\",
+        "outputPath": "D:\\Documents\\Projects\\KnowlageAccountingSystem\\KnowledgeAccountingSystem\\KnowledgeAccountingSystem\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\"
-        ],
         "configFilePaths": [
-          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\olesn\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
@@ -291,8 +275,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "D:\\Epam\\project\\KnowledgeAccountingSystem\\KnowledgeAccountingSystem.BLL\\KnowledgeAccountingSystem.BLL.csproj": {
-                "projectPath": "D:\\Epam\\project\\KnowledgeAccountingSystem\\KnowledgeAccountingSystem.BLL\\KnowledgeAccountingSystem.BLL.csproj"
+              "D:\\Documents\\Projects\\KnowlageAccountingSystem\\KnowledgeAccountingSystem\\KnowledgeAccountingSystem.BLL\\KnowledgeAccountingSystem.BLL.csproj": {
+                "projectPath": "D:\\Documents\\Projects\\KnowlageAccountingSystem\\KnowledgeAccountingSystem\\KnowledgeAccountingSystem.BLL\\KnowledgeAccountingSystem.BLL.csproj"
               }
             }
           }
@@ -328,7 +312,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -340,7 +325,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     }
